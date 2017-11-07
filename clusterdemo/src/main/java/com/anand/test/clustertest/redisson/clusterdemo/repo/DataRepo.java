@@ -14,9 +14,6 @@ import com.anand.test.clustertest.redisson.clusterdemo.models.ExampleData;
 @Repository
 public class DataRepo {
 
-	@Autowired
-	private RedissonClient client;
-	//Put Data To Cache
 	
 	@RCachePut(cacheName = "test", key = "#data.cachekey" , ttl="#redis.ttl.test")
 	public ExampleData cacheData(ExampleData data)
@@ -28,8 +25,7 @@ public class DataRepo {
 	@RCacheGet(cacheName = "test",key = "key")
 	public ExampleData fetchData(String key)
 	{
-		//RBucket<ExampleData> bucket = client.getBucket(key);
-		//return bucket.get();
+
 		return null;
 
 	}
