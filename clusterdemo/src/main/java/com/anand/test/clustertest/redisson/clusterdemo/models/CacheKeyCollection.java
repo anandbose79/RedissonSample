@@ -1,6 +1,5 @@
 package com.anand.test.clustertest.redisson.clusterdemo.models;
 
-import java.util.List;
 import java.util.Set;
 
 public class CacheKeyCollection {

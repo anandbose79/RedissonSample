@@ -8,7 +8,6 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +25,6 @@ public class RcustomAspect {
  RedissonClient client;
  @Autowired
  private Environment env;
- //@Value("${appprops.ttl}")
  private String ttl="";
  @Pointcut("@annotation(cacheput)")
  public void callAt(RCachePut cacheput) {
@@ -162,7 +160,6 @@ public class RcustomAspect {
 	  String cacheName = cacheevict.cacheName();
 	  
 
-     System.out.println("Key is ::"+Key);
      int keyIndex = 0;
      for (int i=0;i<Names.length;i++ )
      {
@@ -187,7 +184,6 @@ public class RcustomAspect {
 		 s.forEach(key -> {
 			 RBucket<Object> bucket = client.getBucket(cacheName+"-"+key);
 			 bucket.delete();
-			 System.out.println("deleted key::"+key+"::in space::"+cacheName);
 		 
 		 });
 		 MainBucket.delete();
@@ -198,12 +194,10 @@ public class RcustomAspect {
 		 String cachekey = (String)(obj);
 		 RBucket<Object> bucket = client.getBucket(cacheName+"-"+cachekey);
 		 bucket.delete();
-		 System.out.println("deleted key ::" + cachekey + "::in space:: "+cacheName);
 		 s.remove(cachekey);
 		 CacheKeyCollection coll = MainBucket.get();
 		 coll.setKeys(s);
 		 MainBucket.set(coll);
-		 System.out.println("Current collection is::"+coll.toString());
 
 		 
 	 }
