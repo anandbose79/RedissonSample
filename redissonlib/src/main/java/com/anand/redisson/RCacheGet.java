@@ -1,4 +1,4 @@
-package com.anand.test.clustertest.redisson.clusterdemo.aop;
+package com.anand.redisson;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,10 +7,9 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface RCachePut {
+public @interface RCacheGet {
       String cacheName() default "default";
       String key() default "";
-      String ttl() default "7D";
       
       
 }

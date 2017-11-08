@@ -1,4 +1,4 @@
-package com.anand.test.clustertest.redisson.clusterdemo.models;
+package com.anand.redisson.models;
 
 import java.util.Set;
 

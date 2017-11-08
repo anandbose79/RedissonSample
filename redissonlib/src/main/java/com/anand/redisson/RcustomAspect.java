@@ -1,4 +1,4 @@
-package com.anand.test.clustertest.redisson.clusterdemo.aop;
+package com.anand.redisson;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
-import com.anand.test.clustertest.redisson.clusterdemo.models.CacheKeyCollection;
+import com.anand.redisson.models.CacheKeyCollection;
 
 import java.lang.reflect.Field;
 import java.util.HashSet;
