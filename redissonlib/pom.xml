@@ -90,8 +90,8 @@
 	                        </publisher>
 	                        <licenses>
 								<autoDiscover>true</autoDiscover>
-								<includePublishedArtifacts>true</includePublishedArtifacts>
-								<runChecks>false</runChecks>
+								<includePublishedArtifacts>false</includePublishedArtifacts>
+								<runChecks>true</runChecks>
 								<scopes>compile,runtime</scopes>
 								<violationRecipients>build@organisation.com</violationRecipients>
 							</licenses>
