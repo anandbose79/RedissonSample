@@ -1,14 +1,11 @@
 package com.anand.test.clustertest.redisson.clusterdemo.repo;
 
-import org.redisson.api.RBucket;
-import org.redisson.api.RedissonClient;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Repository;
 
-import com.anand.test.clustertest.redisson.clusterdemo.aop.RCacheEvict;
-import com.anand.test.clustertest.redisson.clusterdemo.aop.RCacheGet;
-import com.anand.test.clustertest.redisson.clusterdemo.aop.RCachePut;
+import com.anand.redisson.RCacheEvict;
+import com.anand.redisson.RCacheGet;
+import com.anand.redisson.RCachePut;
 import com.anand.test.clustertest.redisson.clusterdemo.models.ExampleData;
 
 @Repository
