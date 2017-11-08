@@ -25,20 +25,14 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-aop</artifactId>
-    </dependency>
+		 <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter</artifactId>
+	    </dependency>
+	   <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-aop</artifactId>
+	    </dependency>
 		<dependency>
   			 <groupId>org.redisson</groupId>
  			  <artifactId>redisson</artifactId>
@@ -52,13 +46,100 @@
 	</dependencies>
 
 	<build>
+	        <pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.6</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.1.2</version>
+				</plugin>
+			</plugins>
+        </pluginManagement>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+	            <groupId>org.jfrog.buildinfo</groupId>
+	            <artifactId>artifactory-maven-plugin</artifactId>
+	            <version>2.6.1</version>
+	            <inherited>false</inherited>
+	            <executions>
+	                <execution>
+	                    <id>build-info</id>
+	                    <goals>
+	                        <goal>publish</goal>
+	                    </goals>
+	                    <configuration>
+	                        <deployProperties>
+	                            <gradle>awesome</gradle>
+	                        </deployProperties>
+	                        <publisher>
+	                            <contextUrl>https://anandsartifactory.jfrog.io/anandsartifactory</contextUrl>
+	                            <username>anand</username>
+	                            <password>AP6UNGec6mp88k4n42BGYbosXkY</password>
+	                            <repoKey>libs-release-local</repoKey>
+	                            <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
+	                        </publisher>
+	                        <licenses>
+								<autoDiscover>true</autoDiscover>
+								<includePublishedArtifacts>true</includePublishedArtifacts>
+								<runChecks>false</runChecks>
+								<scopes>compile,runtime</scopes>
+								<violationRecipients>build@organisation.com</violationRecipients>
+							</licenses>
+	                    </configuration>
+	                </execution>
+	            </executions>
+        		</plugin>
+   			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                </configuration>
+            </plugin>     		
 		</plugins>
 	</build>
-
-
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>bintray</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>bintray-plugins</name>
+            <url>http://jcenter.bintray.com</url>
+        </pluginRepository>
+    </pluginRepositories>
+	<distributionManagement>
+	    <repository>
+	        <id>central</id>
+	        <name>anandsartifactory-releases</name>
+	        <url>https://anandsartifactory.jfrog.io/anandsartifactory/libs-snapshot-local</url>
+	    </repository>
+	      <snapshotRepository>
+	        <id>snapshots</id>
+	        <name>anandsartifactory-snapshots</name>
+	        <url>https://anandsartifactory.jfrog.io/anandsartifactory/libs-snapshot-local</url>
+	    </snapshotRepository>
+	</distributionManagement>
 </project>
