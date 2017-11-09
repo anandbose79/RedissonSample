@@ -15,6 +15,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.8.RELEASE</version>
+
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -22,6 +23,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+				<username></username>
+		<password></password>
 	</properties>
 
 	<dependencies>
@@ -83,15 +86,15 @@
 	                        </deployProperties>
 	                        <publisher>
 	                            <contextUrl>https://anandsartifactory.jfrog.io/anandsartifactory</contextUrl>
-	                            <username>anand</username>
-	                            <password>AP6UNGec6mp88k4n42BGYbosXkY</password>
+	                            <username>${username}</username>
+	                            <password>${password}</password>
 	                            <repoKey>libs-release-local</repoKey>
 	                            <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
 	                        </publisher>
 	                        <licenses>
 								<autoDiscover>true</autoDiscover>
-								<includePublishedArtifacts>false</includePublishedArtifacts>
-								<runChecks>true</runChecks>
+								<includePublishedArtifacts>true</includePublishedArtifacts>
+								<runChecks>false</runChecks>
 								<scopes>compile,runtime</scopes>
 								<violationRecipients>build@organisation.com</violationRecipients>
 							</licenses>
@@ -134,7 +137,7 @@
 	    <repository>
 	        <id>central</id>
 	        <name>anandsartifactory-releases</name>
-	        <url>https://anandsartifactory.jfrog.io/anandsartifactory/libs-snapshot-local</url>
+	        <url>https://anandsartifactory.jfrog.io/anandsartifactory/libs-snapshot-release</url>
 	    </repository>
 	      <snapshotRepository>
 	        <id>snapshots</id>

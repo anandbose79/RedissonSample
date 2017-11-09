@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class RedisonCache {
  public @Bean RedissonClient createRedissonBean() throws Exception
  {
-	 Config config = Config.fromYAML(new File("/Users/anandbose/tmob/Redis/application.yml"));
+	 Config config = Config.fromYAML(new File("/Users/anandbose/tmob/Redis/redis-local-cluster.yml"));
 	 RedissonClient client = Redisson.create(config);
 	 return client;
  }
