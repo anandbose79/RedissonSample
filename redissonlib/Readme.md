@@ -99,3 +99,9 @@
                 - This will clear a specific key in the cache space
       3. key
            This is valid only if scope is set to "KEY". Key needs to be specified as a parameter in the method and is expected to be of String type.
+#Sample implementation
+      * Sample implementation is:
+        https://github.com/anandbose79/RedissonSample/tree/master/redissonimpl
+
+      * Cache implementation component ExampleData
+        https://github.com/anandbose79/RedissonSample/blob/master/redissonimpl/src/main/java/com/anand/test/clustertest/redisson/clusterdemo/repo/DataRepo.java
