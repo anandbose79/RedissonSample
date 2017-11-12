@@ -62,3 +62,26 @@
   threads: 0
 
   ```
+  The sample client connection code is below . This needs to be declared as a bean in all the client implementation
+
+  ```
+  Config config = Config.fromYAML(new File("/Users/anandbose/Redis/redis-local-cluster.yml"));
+  RedissonClient client = Redisson.create(config);
+
+  ```
+
+## Cache usage Instructions
+  There are custom annotations created in the library
+### @RCachePut
+
+      @RCachePut annotation is used to create/update an object in Cache. This implementation takes the object , and stores it against the key passed. The parameters are:
+
+      1.cacheName - Unique Name for the cache space. This is a mandatory field
+      2.key - Unique key for the specific object . Key needs to be specified as a parameter in the method. Also key can be specified as a property within the object. Key cannot be present as a  hardcoded value. This is a mandatory field
+      eg : key="#data.cachekey" method signature would be
+      public voif cacheData(ExampleData data)
+      The key will be extracted from the object , where cachekey is a field in the object.
+      3.ttl - Time to live. This can be specified in the yml file . For minutes end with M eg;(10M - means 10 minutes) , hours  end with H and for days end with D . To use a ttl specified in the yml config file , prefix the parameter with a # . Eg : ttl="#redis.ttl.test" where redis.ttl.test is the propert name in yml.
+### @RCacheGet
+
+      @RCacheGet annotation is used to retreive the object from Cache. This is a required field. The parameter for this is "key" .Key needs to be specified as a parameter in the method and is expected to be of String type.
