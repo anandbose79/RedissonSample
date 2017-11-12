@@ -85,3 +85,17 @@
 ### @RCacheGet
 
       @RCacheGet annotation is used to retreive the object from Cache. This is a required field. The parameter for this is "key" .Key needs to be specified as a parameter in the method and is expected to be of String type.
+
+### @RCacheEvict
+
+      @RCacheEvict annotation is used to clear data in specific cachenames. The parameters are
+      1. cacheName
+            Unique Name for the cache space. This is a mandatory field
+      2. scope
+           This is the scope for eviction.This is a mandatory field. There are 2 scopes currently defined
+           * ALL
+                - This will clear all the keys in the cache space
+           * KEY
+                - This will clear a specific key in the cache space
+      3. key
+           This is valid only if scope is set to "KEY". Key needs to be specified as a parameter in the method and is expected to be of String type.
