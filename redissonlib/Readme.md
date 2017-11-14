@@ -30,7 +30,7 @@
 
   The prerequisite for using the library is to create the client. The client connection can be created by using a YML file with Redisson connection parameters
 
-  1. Sample YML file is below
+  1. Sample YML file is below for replicated servers (This is specifically for AWS which is set up in a non clustered mode)
 
   ```
   replicatedServersConfig:
@@ -55,12 +55,45 @@
   readMode: "SLAVE"
   subscriptionMode: "SLAVE"
   nodeAddresses:
-  - "redis://127.0.0.1:2812"
-  - "redis://127.0.0.1:2815"
-  - "redis://127.0.0.1:2813"
+  - "redis://awshost:2812"
+  - "redis://awshost:2815"
+  - "redis://awshost:2813"
   scanInterval: 1000
   threads: 0
 
+  ```
+  
+  2. Sample Clustered configuration:
+  ```
+  clusterServersConfig:
+  idleConnectionTimeout: 10000
+  pingTimeout: 1000
+  connectTimeout: 10000
+  timeout: 3000
+  retryAttempts: 3
+  retryInterval: 1500
+  reconnectionTimeout: 3000
+  failedAttempts: 3
+  password: null
+  subscriptionsPerConnection: 5
+  clientName: null
+  loadBalancer: !<org.redisson.connection.balancer.RoundRobinLoadBalancer> {}
+  subscriptionConnectionMinimumIdleSize: 1
+  subscriptionConnectionPoolSize: 50
+  slaveConnectionMinimumIdleSize: 10
+  slaveConnectionPoolSize: 64
+  masterConnectionMinimumIdleSize: 10
+  masterConnectionPoolSize: 64
+  readMode: "MASTER_SLAVE"
+  #subscriptionMode: "MASTER_SLAVE"
+  nodeAddresses:
+    - "redis://localhost:7000"
+  #  - "localhost:7001"
+  scanInterval: 1000
+threads: 0
+nettyThreads: 0
+codec: !<org.redisson.codec.JsonJacksonCodec> {}
+useLinuxNativeEpoll: false
   ```
   The sample client connection code is below . This needs to be declared as a bean in all the client implementation
 
