@@ -62,7 +62,7 @@
   threads: 0
 
   ```
-  
+
   2. Sample Clustered configuration:
   ```
   clusterServersConfig:
@@ -90,10 +90,10 @@
     - "redis://localhost:7000"
   #  - "localhost:7001"
   scanInterval: 1000
-threads: 0
-nettyThreads: 0
-codec: !<org.redisson.codec.JsonJacksonCodec> {}
-useLinuxNativeEpoll: false
+  threads: 0
+  nettyThreads: 0
+  codec: !<org.redisson.codec.JsonJacksonCodec> {}
+    useLinuxNativeEpoll: false
   ```
   The sample client connection code is below . This needs to be declared as a bean in all the client implementation
 
