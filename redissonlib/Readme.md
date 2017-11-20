@@ -98,8 +98,12 @@
   The sample client connection code is below . This needs to be declared as a bean in all the client implementation
 
   ```
-  Config config = Config.fromYAML(new File("/Users/anandbose/Redis/redis-local-cluster.yml"));
-  RedissonClient client = Redisson.create(config);
+ public @Bean RedissonClient createRedissonBean() throws Exception
+ {
+	 Config config = Config.fromYAML(new File(filename));
+	 RedissonClient client = Redisson.create(config);
+	 return client;
+ }
 
   ```
 
